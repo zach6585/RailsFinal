@@ -1,0 +1,12 @@
+<%= form_with url: '/search', scope: 'post' do |f| %>
+    <%= f.label :company %>
+    <%= f.text_field :company %>
+    <%= f.label :contact %>
+    <%= f.text_field :contact %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.submit "Search" %>
+<% end %>
+    
+    
+    
