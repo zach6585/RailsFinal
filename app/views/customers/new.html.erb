@@ -1,0 +1,10 @@
+<% if !logged_in? %>
+    <h1>You must log in before you see anything</h1>
+
+<% elsif !current_user.customers.include?(@customer) && current_user.admin == false %>
+    <h1>You do not have access to see this page. Please go back and try again</h1> 
+
+<% else %>
+
+
+<% end %>

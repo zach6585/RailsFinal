@@ -1,7 +1,12 @@
 require 'pry'
-class CustomersController < ApplicationController
-    def signin 
-         #This is going to have to use an oauth2 login. Try and get office 365 to work. If not default to like facebook or the devise one
+class WbwWorkersController < ApplicationController
+
+    def index 
+        @workers = WbwWorker.all 
+    end 
+    
+    def show 
+        @worker = WbwWorker.find(params[:id])
     end 
 
     def new 
@@ -12,7 +17,6 @@ class CustomersController < ApplicationController
         @worker = WbwWorker.new(wbwworker_params)
         if @worker.valid?
             @worker.save 
-            session[:user_id]
             redirect_to wbwworker_path(@worker)
         else 
             render :new 
@@ -20,7 +24,7 @@ class CustomersController < ApplicationController
     end 
     
     def edit 
-        #This part should only be accessible by admins. This is where scope will come into play 
+        @worker = WbwWorker.new(wbwworker_params)
     end 
 
     def update 
@@ -30,10 +34,6 @@ class CustomersController < ApplicationController
         redirect_to wbwworker_path(@worker)
     end 
 
-    def signin
-       #This will be the post method for the home page 
-    end 
-
     def destroy
         @worker = WbwWorker.find(params[:id]) 
     end 
@@ -41,6 +41,6 @@ class CustomersController < ApplicationController
     private 
 
     def wbwworker_params
-        params.require(:wbwworker).permit(:fullname, :username, :email, :password)
+        params.permit(:name, :username, :email, :password)
     end 
 end 

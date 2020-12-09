@@ -1,0 +1,53 @@
+<% if !logged_in? %>
+    <h1>You must log in before you see anything</h1>
+
+<% elsif !current_user.customers.include?(@customer) && current_user.admin == false %>
+    <h1>You do not have access to see this page. Please go back and try again</h1> 
+
+<% else %>
+        <h1 style="text-align: center;"><%= @customer.title %></h1>
+        <% contact = Contact.find(@customer.contact_id) %>
+        <% worker = WbwWorker.find(@customer.wbw_worker_id) %>
+        <h2>Worker Details:</h2><hr>
+        <% worker.attributes.each do |k, v| %>
+            <% if k == 'admin' %>
+                <% break %>
+            <% elsif k == "id" %>
+            <% else %>
+                <h2><%= k %>:    <%= v %></h2>
+            <% end %>
+        <% end %><hr>
+        <br><br><br>
+        
+        
+        <h2>Contact Details</h2><hr>
+        <% contact.attributes.each do |k, v| %>
+            <% if k == 'id' %>
+            <% else %>
+                <h2><%= k %>:    <%= v %></h2><hr>
+            <% end %>
+            <% if k == 'email' %>
+                <% break %>
+            <% end %>
+        <% end %>
+        <br><br><br>
+
+            
+    <h1>Notes:</h1><br>
+    <h2>Notes So Far:</h2>
+    <% notes = @customer.notes.split(",") %>
+    <% notes.each do |note| %>
+        <%= note %>
+        <br><br>
+    <% end %>
+
+    <%= form_for wbw_worker_customer_path(@customer.wbw_worker, @customer), method: :patch do |f| %>
+        <%= f.text_area(:notes, size: '50x10') %>
+        <%= f.submit "Change notes" %>
+    <% end %>
+    <br><br><br><br>
+
+    <%= button_to "Delete this Customer", customer_path(@customer), method: :delete %>
+
+
+<% end %>
