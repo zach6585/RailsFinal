@@ -1,2 +1,3 @@
-I'm Zach
-(Later I'm gonna fill this with informational stuff)
+This project utilizes the office 365/microsoft azure omniauth2 gem to sign in. Once you sign in, depending on if you're an admin or not, you will be able to see customers (relationships) according to certain rules. If you're an admin, you can see all customers. If you're not, you can only see the customers that you're assigned to. Within those, you can change the notes, with each note being shown on the page. You can also delete the customer as a whole. The app also has logout functionality through the omniauth gem. Since the workers are the ones with accounts, they have ownership over customers. The contacts are from other companies and therefore do not have access to this information at all.
+
+As of now, this is mostly centered around the customers. It doesn't fully have the functionality to make or edit workers and contacts. The controllers are setup, I just need to finalize the views.

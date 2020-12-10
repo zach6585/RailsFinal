@@ -14,24 +14,29 @@ class WbwWorkersController < ApplicationController
     end 
 
     def create 
+        WbwWorker.new.errors.clear()
         @worker = WbwWorker.new(wbwworker_params)
         if @worker.valid?
             @worker.save 
-            redirect_to wbwworker_path(@worker)
+            redirect_to root_path
         else 
             render :new 
         end 
     end 
     
     def edit 
-        @worker = WbwWorker.new(wbwworker_params)
+        @worker = WbwWorker.find(params[:id])
     end 
 
     def update 
-        #again, only accessible by admins.
         @worker = WbwWorker.find(params[:id])
-        @worker.update(wbwworker_params)
-        redirect_to wbwworker_path(@worker)
+        @worker1 = WbwWorker.new(wbwworker_params)
+        if @worker1.valid?
+            @worker.update(wbwworker_params)
+            redirect_to root_path
+        else 
+            render :edit 
+        end 
     end 
 
     def destroy

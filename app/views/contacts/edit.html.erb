@@ -1,0 +1,28 @@
+<h1 style="text-align: center;">Edit a Contact</h1>
+    
+<% if !logged_in? %>
+    <h1>You must log in before you see anything</h1>
+
+<% elsif current_user.admin == false %>
+    <h1>You do not have access to see this page. Please go back and try again</h1> 
+
+<% else %>
+    <%= form_tag contact_path(@contact), method: :patch do %>
+        <%= render 'contactform'%>
+        <%= submit_tag "Edit Contact" %>
+    <% end %>
+<% end %>
+
+
+<% if @contact.errors[:name].any? %>
+        <h2 style="text-align: center;">Name <%= @contact.errors[:name][0] %></h2>
+    <% end %>
+
+<% if @contact.errors[:email].any? %>
+        <h2 style="text-align: center;">Email <%= @contact.errors[:email][0] %></h2>
+    <% end %>
+
+
+<%= form_tag 'destroy', method: :delete do %>
+    <%= submit_tag "Delete" %>
+<% end %>

@@ -9,11 +9,10 @@ class AuthController < ApplicationController
         save_in_session data
         @worker = WbwWorker.find_by(:name => session[:user_name], :email => session[:user_email])
         if @worker 
-            redirect_to wbw_worker_path(@worker)
         else 
-            reset_session
-            redirect_to root_path 
+            reset_session 
         end 
+        redirect_to root_path 
       end
 
     def signout

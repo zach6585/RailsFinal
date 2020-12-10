@@ -1,0 +1,7 @@
+<h1 style="text-align: center;">Which worker would you like to change?</h1>
+<br>
+<% @workers.each do |worker| %>
+    <h2><%= worker.name %></h2>
+    <%= button_to "Choose #{worker.name}", edit_wbw_worker_path(worker), method: :get %>
+    <br><br>
+<% end %>

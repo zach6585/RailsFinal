@@ -10,12 +10,19 @@ class CustomersController < ApplicationController
     end 
 
     def new 
+        
         @customer = Customer.new 
     end 
 
-    def create 
-        @customer = Customer.new(params)
-        redirect_to customer_path(@customer)
+    def create
+        Customer.new.errors.clear() 
+        @customer = Customer.new(:title => params[:title], :wbw_worker_id => params[:wbw_worker_id], :contact_id => params[:contact_id])
+        if @customer.valid? 
+            @customer.save 
+            redirect_to wbw_worker_customer_path(WbwWorker.find(params[:wbw_worker_id]), @customer)
+        else 
+            render :new
+        end 
     end 
 
     def update 
@@ -28,6 +35,13 @@ class CustomersController < ApplicationController
     def destroy
         a = Customer.find(params[:id])
         Customer.delete(a)
-        redirect_to wbw_worker_customers_path(current_user)  
+        redirect_to wbw_worker_customers_path(WbwWorker.find_by(:name => session[:user_name], :email => session[:user_email]))  
+    end 
+
+
+    private 
+
+    def customer_params 
+        params.permit(:title, :wbw_worker_id, :contact_id)
     end 
 end

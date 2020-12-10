@@ -1,0 +1,23 @@
+<h1 style="text-align: center;">Create a New Contact</h1>
+    
+<% if !logged_in? %>
+    <h1>You must log in before you see anything</h1>
+
+<% elsif current_user.admin == false %>
+    <h1>You do not have access to see this page. Please go back and try again</h1> 
+
+<% else %>
+    <%= form_tag contacts_path(@contact), method: :post do  %>
+        <%= render 'contactform' %>
+        <%= submit_tag "Create Contact" %>
+    <% end %>
+<% end %>
+
+
+<% if @contact.errors[:name].any? %>
+        <h2 style="text-align: center;">Name <%= @contact.errors[:name][0] %></h2>
+    <% end %>
+
+<% if @contact.errors[:email].any? %>
+        <h2 style="text-align: center;">Email <%= @contact.errors[:email][0] %></h2>
+    <% end %>

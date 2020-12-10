@@ -5,6 +5,20 @@
     <h1>You do not have access to see this page. Please go back and try again</h1> 
 
 <% else %>
-
-
+    
+    
+    <h1 style="text-align: center;">Create a New Customer</h1>
+    <%= form_tag wbw_worker_customers_path(current_user) do %>
+        <%= label_tag "What would you like to title this customer?" %>
+        <%= text_field_tag "title" %><br><br>
+        <%= label_tag "Which contact would you like to assign to this customer?" %>
+        <%= select_tag "contact_id", options_from_collection_for_select(Contact.all, "id", "name") %><br><br>
+        <%= submit_tag "Submit" %>
+    <% end %>
 <% end %>
+
+<% if @customer.errors.any? %>
+        <h2 style="text-align: center;"><%= @customer.errors[:title][1] %></h2>
+    <% end %>
+
+    

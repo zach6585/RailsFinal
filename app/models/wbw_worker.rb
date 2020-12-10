@@ -3,6 +3,8 @@ class WbwWorker < ApplicationRecord
     has_many :clients, through: :customers
     validates :name, presence: true
     validates :email, presence: true
-    # address = ValidEmail2::Address.new(visitor.email)
+    validates :name, format: { without: /[0-9]/, message: "does not allow numbers" }
+    validates_with EmailValidator 
+
     
 end
