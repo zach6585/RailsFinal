@@ -28,7 +28,11 @@ class CustomersController < ApplicationController
     def update 
         # binding.pry
         @customer = Customer.find(params[:id])
-        @customer.update(:notes => @customer.notes + "#{params[:"/wbw_workers/#{params[:wbw_worker_id]}/customers/#{params[:id]}"][:notes]},")
+        if @customer.notes == nil
+            @customer.update(:notes => "#{params[:"/wbw_workers/#{params[:wbw_worker_id]}/customers/#{params[:id]}"][:notes]}")
+        else 
+            @customer.update(:notes => @customer.notes + "#{params[:"/wbw_workers/#{params[:wbw_worker_id]}/customers/#{params[:id]}"][:notes]},")
+        end 
         redirect_to wbw_worker_customer_path(WbwWorker.find(params[:wbw_worker_id]), @customer)
     end 
 
