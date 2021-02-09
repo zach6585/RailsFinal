@@ -26,13 +26,17 @@ class CustomersController < ApplicationController
     end 
 
     def update 
-        # binding.pry
+        
         @customer = Customer.find(params[:id])
+        # binding.pry
         if @customer.notes == nil
             @customer.update(:notes => "#{params[:"/wbw_workers/#{params[:wbw_worker_id]}/customers/#{params[:id]}"][:notes]}")
         else 
-            @customer.update(:notes => @customer.notes + "#{params[:"/wbw_workers/#{params[:wbw_worker_id]}/customers/#{params[:id]}"][:notes]},")
-        end 
+            if params[:"/wbw_workers/#{params[:wbw_worker_id]}/customers/#{params[:id]}"][:notes] == ""
+            else 
+                @customer.update(:notes => "#{@customer.notes}, #{Time.now.strftime("%B %e %Y at %I:%M %p")}: #{params[:"/wbw_workers/#{params[:wbw_worker_id]}/customers/#{params[:id]}"][:notes]}")
+            end
+        end  
         redirect_to wbw_worker_customer_path(WbwWorker.find(params[:wbw_worker_id]), @customer)
     end 
 
@@ -42,7 +46,18 @@ class CustomersController < ApplicationController
         redirect_to wbw_worker_customers_path(WbwWorker.find_by(:name => session[:user_name], :email => session[:user_email]))  
     end 
 
+    def search
+        @customers = Customer.searcher(params)
+        
+        if @customers
+            render "results" 
+        else 
+            redirect_to '/customers/index' 
+        end  
+    end 
 
+   
+    
     private 
 
     def customer_params 

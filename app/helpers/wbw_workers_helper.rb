@@ -1,10 +1,7 @@
 module WbwWorkersHelper
+    
     def logged_in?
-        if session[:user_name]
-            return true 
-        else 
-            return false 
-        end 
+        return !!session[:user_name] && !!session[:user_email]
     end 
 
     def current_user 

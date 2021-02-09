@@ -1,29 +1,27 @@
+<!DOCTYPE HTML>
+<html>
 
 <% if !logged_in? %>
     <h1>You must log in before you see anything</h1>
-<% end %>
-<% a = 0 %>
-<% @customers.each do |customer| %>
-    <% if current_user.customers.include?(customer) %>
-        <% a += 1 %>
-    <% end %>
-<% end %>
-
-<% if a == 0 && current_user.admin == false %>
-    <h1>You do not have access to see this page. Please go back and try again</h1> 
-
 <% else %>
-    <% if current_user.admin == true %>
-        <% @customers.each do |customer| %>
-            <h1><%= customer.title %></h1><hr>
-            <h2><%= link_to "Look at this customer", wbw_worker_customer_path(WbwWorker.find(customer.wbw_worker_id), customer) %></h2><br>
-        <% end %>
-        
-        <br>
-    <% else %>
-        <% current_user.customers.each do |customer| %>
-            <h1><%= customer.title %></h1><hr>
-            <h2><%= link_to "Look at this customer", wbw_worker_customer_path(current_user, customer) %></h2><br>
-        <% end %>
+
+
+
+<br><br><br>
+    <%= form_with url: '/customers/search', local: true do |f| %>
+        <%= f.label :wbw_worker, "WBW Worker" %>
+        <%= f.text_field :wbw_worker %>
+        <br><br>
+        <%= f.label :contact, "Contact Name" %>
+        <%= f.text_field :contact %>    
+        <br><br>
+        <%= f.submit "Search" %>
+        <a shref="/">Cancel</a>
     <% end %>
+
+
+
+
+
 <% end %>
+</html>

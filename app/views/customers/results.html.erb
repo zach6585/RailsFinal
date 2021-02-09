@@ -1,0 +1,7 @@
+
+<% @customers.each do |customer| %>
+    <h1><%= customer.title %></h1>
+    <%= link_to "Go to Customer", wbw_worker_customer_path(WbwWorker.find(customer.wbw_worker_id), customer) %>
+    
+<% end %>
+

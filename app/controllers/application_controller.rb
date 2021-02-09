@@ -25,6 +25,8 @@ class ApplicationController < ActionController::Base
         session[:user_email]
     end
     
+    
+
     def access_token
         token_hash = session[:graph_token_hash]
       

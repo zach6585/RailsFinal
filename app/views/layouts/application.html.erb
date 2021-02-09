@@ -11,6 +11,16 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"></script>
+      <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
@@ -28,8 +38,14 @@
             <% @worker = WbwWorker.find_by(:name => @user_name, :email => @user_email) %>
             <% if @worker %>
             <li class="nav-item" data-turbolinks="false">
+                <%= link_to "Calendar", "/calendar", class: "nav-link#{' active' if controller.controller_name == 'calendar'}" %>
+              </li>
+            <li class="nav-item" data-turbolinks="false">
                 <%= link_to "Create a new Customer", new_wbw_worker_customer_path(@worker), method: :get, class: "nav-link#{' active' if controller.controller_name == 'wbwworkers'}" %>
               </li>
+            <li class="nav-item" data-turbolinks="false">
+              <%= link_to "Search", customers_index_path, method: :get, class: "nav-link#{' active' if controller.controller_name == 'wbwworkers'}" %>
+            </li>
               <% if @worker.admin == false %>
               <li class="nav-item" data-turbolinks="false">
                 <%= link_to "My Customers", wbw_worker_customers_path(current_user), method: :get,  class: "nav-link#{' active' if controller.controller_name == 'wbwworkers'}" %>
@@ -94,16 +110,8 @@
       <%= yield %>
     </main>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-      crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"></script>
+    
 
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+   
   </body>
 </html>

@@ -8,7 +8,7 @@
         <h1 style="text-align: center;"><%= @customer.title %></h1>
         <% contact = Contact.find(@customer.contact_id) %>
         <% worker = WbwWorker.find(@customer.wbw_worker_id) %>
-        <h2>Worker Details:</h2><hr>
+        <h2>WBW Worker Details:</h2><hr>
         <% worker.attributes.each do |k, v| %>
             <% if k == 'admin' %>
                 <% break %>
