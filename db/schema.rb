@@ -10,22 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_08_213136) do
+ActiveRecord::Schema.define(version: 2021_02_23_014548) do
 
   create_table "contacts", force: :cascade do |t|
+    t.string "company"
     t.string "name"
     t.string "email"
+    t.string "number"
+    t.string "title"
+    t.string "old_address"
+    t.string "new_address"
+    t.string "category"
+    t.string "broker_name"
+    t.string "broker_company"
+    t.string "broker_number"
+    t.string "architect_name"
+    t.string "architect_company"
+    t.string "architect_number"
+    t.string "consultant_name"
+    t.string "consultant_company"
+    t.string "consultant_number"
+    t.text "notes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "customers", force: :cascade do |t|
-    t.string "title"
-    t.integer "wbw_worker_id"
-    t.integer "contact_id"
-    t.text "notes"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table "contacts_workers", id: false, force: :cascade do |t|
+    t.integer "worker_id", null: false
+    t.integer "contact_id", null: false
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -37,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_12_08_213136) do
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
-  create_table "wbw_workers", force: :cascade do |t|
+  create_table "workers", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.boolean "admin", default: false

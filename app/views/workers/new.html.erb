@@ -1,0 +1,20 @@
+<h1 style="text-align: center;">Create a New WBW Worker</h1>
+
+<% if !logged_in? %>
+    <h1>You must log in before you see anything</h1>
+
+
+<% else %>
+    <%= form_with url: "/workers" do |f| %>
+        <%= f.label :email, "What's their email?" %>
+        <%= f.text_field :email %>
+        <br>
+        <%= f.label :confirmation, "Confirm Email: " %>
+        <%= f.text_field :confirmation %>
+        <br>
+
+        <%= f.submit "Create Worker" %>
+    <% end %>
+<% end %>
+
+

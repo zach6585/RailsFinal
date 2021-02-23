@@ -23,7 +23,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'valid_email2'
 
 # OAuth
-gem 'omniauth-oauth2', '~> 1.6'
+gem 'omniauth-oauth2', '~> 1.4.0'
 # OmniAuth CSRF protection
 gem 'omniauth-rails_csrf_protection', '~> 0.1.2'
 # REST calls to Microsoft Graph

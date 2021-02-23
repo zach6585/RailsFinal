@@ -1,7 +1,16 @@
-<h1 style="text-align: center;">Which Contact would you like to change?</h1>
-<br>
+<!DOCTYPE HTML>
+<html>
+
+
 <% @contacts.each do |contact| %>
-    <h2><%= contact.name %></h2>
-    <%= button_to "Choose #{contact.name}", edit_contact_path(contact), method: :get %>
+    
+    <h2>Company: <%= contact.company %></h2>
+    
+    
+    <%= link_to "View this Contact", "/contacts/#{contact.id}" %>
     <br><br>
+    
 <% end %>
+
+</html>
+

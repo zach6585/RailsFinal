@@ -1,0 +1,133 @@
+<% if !logged_in? %>
+    <h1>You must log in before you see anything</h1>
+
+<% else %>
+        
+    <div id="compdiv">
+        <h2 id="complabel">Company</h2>
+        <h3 id="company"><%= @contact.company %></h3>
+    </div>
+    
+
+    <div id="catgdiv">
+        <h2 id="catglabel">Category</h2>
+        <h3 id="category"><%= @contact.category %></h3>
+    </div>
+    
+
+    <div id="namediv">
+        <h2 id="namelabel">Contact Name</h2>
+        <h3 id="name"><%= @contact.name %></h3>
+    </div>
+    
+
+    <div id="titlediv">
+        <h2 id="titlelabel">Title</h2>
+        <h3 id="title"><%= @contact.title %></h3>
+    </div>
+
+    <div id="workercontainer">
+    <% i = 1 %>
+    <% @contact.workers.each do |worker| %>
+        <div class="workdivs" id="worker<%= i %>div">
+            <h2 id="catglabel">WBW Employee <%= i %></h2>
+            <h3 id="category"><%= worker.name %></h3>
+        </div>
+        <% i += 1 %>
+    <% end %>
+    </div>
+
+    <div id="emaildiv">
+        <h2 id="emaillabel">Email</h2>
+        <h3 id="email"><%= @contact.email %></h3>
+    </div>
+    
+    <div id="numdiv">
+        <h2 id="numlabel">Phone #</h2>
+        <h3 id="number"><%= @contact.number %></h3>
+    </div>
+    
+    <div id="oldadrdiv">
+        <h2 id="oldadrlabel">Old Address </h2>
+        <h3 id="oldaddress"><%= @contact.old_address %></h3>
+    </div>
+
+    <div id="newadrdiv">
+        <h2 id="newadrlabel">New Address </h2>
+        <h3 id="newaddress"><%= @contact.new_address %></h3>
+    </div>
+
+    <div id="brokerdiv">
+        <div id="brnamediv">
+            <h2 id="brokernamelabel">Broker Name </h2>
+            <h3 id="brokername"><%= @contact.broker_name %></h3>
+        </div>
+
+        <div id="brcompdiv">
+            <h2 id="brokercomplabel">Broker Company </h2>
+            <h3 id="brokercompany"><%= @contact.broker_company %></h3>
+        </div>
+
+        <div id="brnumdiv">
+            <h2 id="brokernumlabel">Broker # </h2>
+            <h3 id="brokernumber"><%= @contact.broker_number %></h3>
+        </div>
+    </div>
+
+    <div id="archdiv">
+        <div id="archnamediv">
+            <h2 id="archnamelabel">Architect Name </h2>
+            <h3 id="archname"><%= @contact.architect_name %></h3>
+        </div>
+
+        <div id="archcompdiv">
+            <h2 id="archcomplabel">Architect Company </h2>
+            <h3 id="archcompany"><%= @contact.architect_company %></h3>
+        </div>
+
+        <div id="archnumdiv">
+            <h2 id="archnumlabel">Architect # </h2>
+            <h3 id="archnumber"><%= @contact.architect_number %></h3>
+        </div>
+
+        <div id="condiv">
+        <div id="connamediv">
+            <h2 id="connamelabel">Consultant Name </h2>
+            <h3 id="conname"><%= @contact.consultant_name %></h3>
+        </div>
+
+        <div id="concompdiv">
+            <h2 id="concomplabel">Consultant Company </h2>
+            <h3 id="concompany"><%= @contact.consultant_company %></h3>
+        </div>
+
+        <div id="connumdiv">
+            <h2 id="connumlabel">Consultant # </h2>
+            <h3 id="connumber"><%= @contact.consultant_number %></h3>
+        </div>
+    </div>
+    </div>
+
+
+    
+    
+
+    <h1>Notes:</h1><br>
+    <h2>Notes So Far:</h2>
+    <% if @contact.notes %>
+        <% notes = @contact.notes.split(",") %>
+        <% notes.each do |note| %>
+            <%= note %>
+            <br><br>
+        <% end %>
+    <% end %>
+    <%= form_for contact_path(@contact), method: :patch do |f| %>
+        <%= f.text_area(:notes, size: '50x10') %>
+        <%= f.submit "Change notes" %>
+    <% end %>
+    <br><br><br><br>
+
+    <%= button_to "Delete this Contact", contact_path(@contact), method: :delete %>
+
+
+<% end %>

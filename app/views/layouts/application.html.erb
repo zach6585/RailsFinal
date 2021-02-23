@@ -35,39 +35,20 @@
             <li class="nav-item">
               <%= link_to "Home", root_path, class: "nav-link#{' active' if controller.controller_name == 'home'}" %>
             </li>
-            <% @worker = WbwWorker.find_by(:name => @user_name, :email => @user_email) %>
+            <% @worker = Worker.find_by(:name => @user_name, :email => @user_email) %>
             <% if @worker %>
             <li class="nav-item" data-turbolinks="false">
-                <%= link_to "Calendar", "/calendar", class: "nav-link#{' active' if controller.controller_name == 'calendar'}" %>
+                <%= link_to "Calendar", "/calendar", class: "nav-link#{' active' if controller.controller_name == 'calendar'}", id: "calendar" %>
               </li>
             <li class="nav-item" data-turbolinks="false">
-                <%= link_to "Create a new Customer", new_wbw_worker_customer_path(@worker), method: :get, class: "nav-link#{' active' if controller.controller_name == 'wbwworkers'}" %>
+                <%= link_to "Create a new Contact", new_contact_path, method: :get, class: "nav-link#{' active' if controller.controller_name == 'workers'}" %>
               </li>
             <li class="nav-item" data-turbolinks="false">
-              <%= link_to "Search", customers_index_path, method: :get, class: "nav-link#{' active' if controller.controller_name == 'wbwworkers'}" %>
+              <%= link_to "Search", contacts_search_path, method: :get, class: "nav-link#{' active' if controller.controller_name == 'workers'}" %>
             </li>
-              <% if @worker.admin == false %>
               <li class="nav-item" data-turbolinks="false">
-                <%= link_to "My Customers", wbw_worker_customers_path(current_user), method: :get,  class: "nav-link#{' active' if controller.controller_name == 'wbwworkers'}" %>
+                <%= link_to "Add a new Worker", new_worker_path, method: :get, class: "nav-link#{' active' if controller.controller_name == 'workers'}" %>
               </li>
-            <% elsif @worker.admin == true %>
-              <li class="nav-item" data-turbolinks="false">
-                <%= link_to "All customers", wbw_worker_customers_path(current_user), method: :get, class: "nav-link#{' active' if controller.controller_name == 'wbwworkers'}" %>
-              </li>
-              <li class="nav-item" data-turbolinks="false">
-                <%= link_to "Create a new Worker", new_wbw_worker_path, method: :get, class: "nav-link#{' active' if controller.controller_name == 'wbwworkers'}" %>
-              </li>
-              <li class="nav-item" data-turbolinks="false">
-              <%= link_to "Edit a worker", wbw_workers_path, method: :get, class: "nav-link#{' active' if controller.controller_name == 'wbwworkers'}" %>
-              </li>
-              <li class="nav-item" data-turbolinks="false">
-                <%= link_to "Create a new Contact", new_contact_path, method: :get, class: "nav-link#{' active' if controller.controller_name == 'wbwworkers'}" %>
-              </li>
-              <li class="nav-item" data-turbolinks="false">
-              <%= link_to "Edit a Contact", contacts_path, method: :get, class: "nav-link#{' active' if controller.controller_name == 'wbwworkers'}" %>
-              </li>
-
-            <% end %>
             <% end %>
           </ul>
           <ul class="navbar-nav justify-content-end">

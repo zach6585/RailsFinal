@@ -8,10 +8,10 @@
 
 
 
-worker1 = WbwWorker.create(:name => "James Colleta", :email => "jamesyboy123@gmail.com")
-contact = Contact.create(:name => "Billybob Thornton", :email => "Therealbillybob@gmail.com")
-worker2 = WbwWorker.create(:name => "zachary mines", :email => "moustacheman531@gmail.com", :admin => true)
+worker1 = Worker.create(:name => "James Colleta", :email => "jamesyboy123@gmail.com")
 
-customer1 = Customer.create(:title => "Best Customer", :wbw_worker_id => 1, :contact_id => 1, :notes => "")
-customer2 = Customer.create(:title => "Even better Customer", :wbw_worker_id => 2, :contact_id => 1, :notes => "")
+worker2 = Worker.create(:name => "zachary mines", :email => "moustacheman531@gmail.com", :admin => true)
+
+# contact1 = Contact.create(:title => "Best Customer", :wbw_worker_id => 1, :contact_id => 1, :notes => "")
+# customer2 = Customer.create(:title => "Even better Customer", :wbw_worker_id => 2, :contact_id => 1, :notes => "")
 
