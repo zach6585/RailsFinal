@@ -2,6 +2,8 @@
 
 <% if !logged_in? %>
     <h1>You must log in before you see anything</h1>
+<% elsif current_user.admin != true %>
+    <h1>You You aren't an admin you can't see this</h1>
 
 
 <% else %>

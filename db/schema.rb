@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 2021_02_23_014548) do
   create_table "contacts_workers", id: false, force: :cascade do |t|
     t.integer "worker_id", null: false
     t.integer "contact_id", null: false
+    t.index ["contact_id"], name: "index_contacts_workers_on_contact_id"
+    t.index ["worker_id"], name: "index_contacts_workers_on_worker_id"
   end
 
   create_table "sessions", force: :cascade do |t|

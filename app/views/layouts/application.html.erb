@@ -40,15 +40,19 @@
             <li class="nav-item" data-turbolinks="false">
                 <%= link_to "Calendar", "/calendar", class: "nav-link#{' active' if controller.controller_name == 'calendar'}", id: "calendar" %>
               </li>
-            <li class="nav-item" data-turbolinks="false">
-                <%= link_to "Create a new Contact", new_contact_path, method: :get, class: "nav-link#{' active' if controller.controller_name == 'workers'}" %>
-              </li>
+              <% if @worker.admin==true %>
+                <li class="nav-item" data-turbolinks="false">
+                  <%= link_to "Create a new Contact", new_contact_path, method: :get, class: "nav-link#{' active' if controller.controller_name == 'workers'}" %>
+                </li>
+              <% end %>
             <li class="nav-item" data-turbolinks="false">
               <%= link_to "Search", contacts_search_path, method: :get, class: "nav-link#{' active' if controller.controller_name == 'workers'}" %>
             </li>
+            <% if @worker.admin==true %>
               <li class="nav-item" data-turbolinks="false">
                 <%= link_to "Add a new Worker", new_worker_path, method: :get, class: "nav-link#{' active' if controller.controller_name == 'workers'}" %>
               </li>
+              <% end %>
             <% end %>
           </ul>
           <ul class="navbar-nav justify-content-end">

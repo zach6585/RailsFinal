@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 
+
 <html>
     <head>
         <script src="jquery-3.5.1.min.js"></script>
@@ -11,7 +12,9 @@
 
 <% if !logged_in? %>
     <h1>You must log in before you see anything</h1>
-
+<% elsif current_user.admin != true %>
+    
+    <h1>You aren't an admin you can't see this</h1>
 
 <% else %>
     
@@ -20,77 +23,94 @@
     
     <%= form_with url: "/contacts" do |f| %>
 
-        <%= f.label :workers, "Which WBW workers do you want to work on this project?: " %>
-        <%= f.select(:workers, options_from_collection_for_select(Worker.all, "id", "name"), {}, {:multiple => true, :class => "workers"}) %>
-        <br><br>
+        
 
-        <%= f.label :company, "Which company is associated with this contact?: " %>
+        <%= f.label :company, "Company: " %>
         <%= f.text_field :company %>
         <br><br>
 
-        <%= f.label :name, "Which worker at this company would you like to assign to this contact?: " %>
+        <%= f.label :name, "Contact: " %>
         <%= f.text_field :name %>
+
+        <%= f.label :workers, "WBW Worker: " %>
+        <%= f.select(:workers, options_from_collection_for_select(Worker.all, "id", "name"), {}, {:multiple => true, :class => "workers"}) %>
         <br><br>
 
-        <%= f.label :email, "What is their email?: " %>
-        <%= f.text_field :email %>
-        <br><br>
-
-        <%= f.label :number, "What is their number?: " %>
-        <%= f.text_field :number %>
-        <br><br>
-
-        <%= f.label :title, "What is their title?: " %>
+        <%= f.label :title, "Contact's title?: " %>
         <%= f.text_field :title %>
+    
         <br><br>
 
-        <%= f.label :old_address, "What is their current address?: " %>
+        <%= f.label :email, "Contact's email?: " %>
+        <%= f.text_field :email %>
+        
+
+        <%= f.label :number, "Contact's number?: " %>
+        <%= f.text_field :number %>
+
+        
+        <%= f.label :old_address, "Contact's current address?: " %>
         <%= f.text_field :old_address %>
-        <br><br>
+        
 
-        <%= f.label :new_address, "What is their new address?: " %>
+        <%= f.label :new_address, "Contact's new address?: " %>
         <%= f.text_field :new_address %>
         <br><br>
 
-        <%= f.label :category, "Which category is this ?: " %>
+        <%= f.label :category, "Category: " %>
         <%= f.select :category, ["EU", "REB", "A&D", "PMfirm", "Other"] %>
         <br><br>
 
-        <%= f.label :broker, "Broker name: " %>
-        <%= f.text_field :broker %>
-        <br>
-        
         <%= f.label :broker_company, "Broker company: " %>
         <%= f.text_field :broker_company %>
         <br>
 
+        <%= f.label :broker, "Broker name: " %>
+        <%= f.text_field :broker_name %>
+        <br>
+        
+
         <%= f.label :broker_number, "Broker contact #: " %>
         <%= f.text_field :broker_number %> 
-        <br><br>
-
-        <%= f.label :architect, "Architect contact: " %>
-        <%= f.text_field :architect %>
         <br>
+
+        <%= f.label :broker_email, "Broker email: " %>
+        <%= f.text_field :broker_email %> 
+        <br><br>
 
         <%= f.label :architect_company, "Architect company: " %>
         <%= f.text_field :architect_company %>
         <br>
 
+        <%= f.label :architect, "Architect contact: " %>
+        <%= f.text_field :architect_name %>
+        <br>
+
+        
         <%= f.label :architect_number, "Architect contact #: " %>
         <%= f.text_field :architect_number %> 
+        <br>
+
+        %= f.label :architect_email, "Architect email: " %>
+        <%= f.text_field :architect_email %> 
         <br><br>
 
-        <%= f.label :consultant, "Consultant name: " %>
-        <%= f.text_field :consultant %>
-        <br>
 
         <%= f.label :consultant_company, "Consultant company: " %>
         <%= f.text_field :consultant_company %>
         <br>
 
+        <%= f.label :consultant, "Consultant name: " %>
+        <%= f.text_field :consultant_name %>
+        <br>
+
         <%= f.label :consultant_number, "Consultant contact #: " %>
         <%= f.text_field :consultant_number %> 
-        <br><br>
+        <br>
+
+        <%= f.label :consultant_email, "Consultant email: " %>
+        <%= f.text_field :consultant_email %>
+        <br>
 
 
         <%= f.submit %> 

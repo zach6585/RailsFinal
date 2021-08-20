@@ -72,7 +72,14 @@
             <h2 id="brokernumlabel">Broker # </h2>
             <h3 id="brokernumber"><%= @contact.broker_number %></h3>
         </div>
+
+        <div id="bremaildiv">
+            <h2 id="brokeremaillabel">Broker Email </h2>
+            <h3 id="brokeremail"><%= @contact.broker_email %></h3>
+        </div>
     </div>
+
+        
 
     <div id="archdiv">
         <div id="archnamediv">
@@ -89,7 +96,11 @@
             <h2 id="archnumlabel">Architect # </h2>
             <h3 id="archnumber"><%= @contact.architect_number %></h3>
         </div>
-
+        <div id="archemaildiv">
+            <h2 id="archemaillabel">Architect Email </h2>
+            <h3 id="archemail"><%= @contact.architect_email %></h3>
+        </div>
+    </div>
         <div id="condiv">
         <div id="connamediv">
             <h2 id="connamelabel">Consultant Name </h2>
@@ -123,7 +134,8 @@
     <% end %>
     <%= form_for contact_path(@contact), method: :patch do |f| %>
         <%= f.text_area(:notes, size: '50x10') %>
-        <%= f.submit "Change notes" %>
+        <br>
+        <%= f.submit "Save Notes" %>
     <% end %>
     <br><br><br><br>
 
