@@ -8,13 +8,17 @@
         <th>Category</th>
         <th>WBW Worker</th>
     </tr>
+    
     <% @contacts.each do |contact| %>
-        <tr>
-            <td><%= contact.company %></td>
-            <td><%= contact.name %></td>
-            <td><%= contact.category %></td>
-            <td><%= contact.worker %></td>
-  </tr>
+    <tr>
+        <td><%= contact.company %></td>
+        <td><%= contact.name %></td>
+        <td><%= contact.category %></td>
+        <td><% contact.workers.each do |worker| %>
+            <%= worker.name %>   
+            <% end %>
+        </td>
+    </tr>
 
     
     <%= link_to "View this Contact", "/contacts/#{contact.id}" %>
