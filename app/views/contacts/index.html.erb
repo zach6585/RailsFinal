@@ -1,16 +1,26 @@
 <!DOCTYPE HTML>
 <html>
 
+<table>
+    <tr>
+        <th>Company</th>
+        <th>Contact</th>
+        <th>Category</th>
+        <th>WBW Worker</th>
+    </tr>
+    <% @contacts.each do |contact| %>
+        <tr>
+            <td><%= contact.company %></td>
+            <td><%= contact.name %></td>
+            <td><%= contact.category %></td>
+            <td><%= contact.worker %></td>
+  </tr>
 
-<% @contacts.each do |contact| %>
-    
-    <h2>Company: <%= contact.company %></h2>
-    
     
     <%= link_to "View this Contact", "/contacts/#{contact.id}" %>
     <br><br>
     
 <% end %>
-
+</table>
 </html>
 

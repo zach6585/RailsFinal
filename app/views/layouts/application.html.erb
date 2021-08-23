@@ -38,6 +38,9 @@
             <% @worker = Worker.find_by(:name => @user_name, :email => @user_email) %>
             <% if @worker %>
             <li class="nav-item" data-turbolinks="false">
+            <%= link_to "Contacts", "/contacts", class: "nav-link#{' active' if controller.controller_name == 'contact'}", id: "contacts" %>
+          </li>
+            <li class="nav-item" data-turbolinks="false">
                 <%= link_to "Calendar", "/calendar", class: "nav-link#{' active' if controller.controller_name == 'calendar'}", id: "calendar" %>
               </li>
               <% if @worker.admin==true %>
