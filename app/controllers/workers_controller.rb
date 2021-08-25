@@ -5,8 +5,8 @@ class WorkersController < ApplicationController
 
     def create 
         # binding.pry
-        @worker = Worker.new(:email => params[:email])
-        if params[:email] == params[:confirmation]
+        @worker = Worker.new(:name => params[:name], :email => params[:email])
+        if params[:email] == params[:confirmation] && params[:name] && params[:name] != "" && Worker.find_by(:email => params[:email]) == nil
             @worker.save 
             redirect_to root_path
         else 

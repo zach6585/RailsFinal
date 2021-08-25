@@ -36,89 +36,113 @@
         <% i += 1 %>
     <% end %>
     </div>
-
-    <div id="emaildiv">
-        <h2 id="emaillabel">Email</h2>
-        <h3 id="email"><%= @contact.email %></h3>
-    </div>
     
-    <div id="numdiv">
-        <h2 id="numlabel">Phone #</h2>
-        <h3 id="number"><%= @contact.number %></h3>
-    </div>
+    <% if @contact.email %>
+        <div id="emaildiv">
+            <h2 id="emaillabel">Email</h2>
+            <h3 id="email"><%= @contact.email %></h3>
+        </div>
+    <% end %>
     
-    <div id="oldadrdiv">
-        <h2 id="oldadrlabel">Old Address </h2>
-        <h3 id="oldaddress"><%= @contact.old_address %></h3>
-    </div>
-
-    <div id="newadrdiv">
-        <h2 id="newadrlabel">New Address </h2>
-        <h3 id="newaddress"><%= @contact.new_address %></h3>
-    </div>
-
-    <div id="brokerdiv">
-        <div id="brnamediv">
-            <h2 id="brokernamelabel">Broker Name </h2>
-            <h3 id="brokername"><%= @contact.broker_name %></h3>
+    <% if @contact.number %>
+        <div id="numdiv">
+            <h2 id="numlabel">Phone #</h2>
+            <h3 id="number"><%= @contact.number %></h3>
         </div>
-
-        <div id="brcompdiv">
-            <h2 id="brokercomplabel">Broker Company </h2>
-            <h3 id="brokercompany"><%= @contact.broker_company %></h3>
+    <% end %>
+    
+    <% if @contact.old_address %>
+        <div id="oldadrdiv">
+            <h2 id="oldadrlabel">Old Address </h2>
+            <h3 id="oldaddress"><%= @contact.old_address %></h3>
         </div>
-
-        <div id="brnumdiv">
-            <h2 id="brokernumlabel">Broker # </h2>
-            <h3 id="brokernumber"><%= @contact.broker_number %></h3>
-        </div>
-
-        <div id="bremaildiv">
-            <h2 id="brokeremaillabel">Broker Email </h2>
-            <h3 id="brokeremail"><%= @contact.broker_email %></h3>
-        </div>
-    </div>
 
         
-
-    <div id="archdiv">
-        <div id="archnamediv">
-            <h2 id="archnamelabel">Architect Name </h2>
-            <h3 id="archname"><%= @contact.architect_name %></h3>
+        <div id="newadrdiv">
+            <h2 id="newadrlabel">New Address </h2>
+            <h3 id="newaddress"><%= @contact.new_address %></h3>
         </div>
 
-        <div id="archcompdiv">
-            <h2 id="archcomplabel">Architect Company </h2>
-            <h3 id="archcompany"><%= @contact.architect_company %></h3>
+    <% end %>    
+ 
+        <div id="brokerdiv">
+        <% if @contact.broker_name %> 
+            <div id="brnamediv">
+                <h2 id="brokernamelabel">Broker Name </h2>
+                <h3 id="brokername"><%= @contact.broker_name %></h3>
+            </div>
+        <% end %>
+        <% if @contact.broker_company %> 
+            <div id="brcompdiv">
+                <h2 id="brokercomplabel">Broker Company </h2>
+                <h3 id="brokercompany"><%= @contact.broker_company %></h3>
+            </div>
+        <% end %>
+            <div id="brnumdiv">
+                <h2 id="brokernumlabel">Broker # </h2>
+                <h3 id="brokernumber"><%= @contact.broker_number %></h3>
+            </div>
+        <% if @contact.broker_email %>
+            <div id="bremaildiv">
+                <h2 id="brokeremaillabel">Broker Email </h2>
+                <h3 id="brokeremail"><%= @contact.broker_email %></h3>
+            </div>
+        <% end %>
         </div>
+        
+    
+            
 
-        <div id="archnumdiv">
-            <h2 id="archnumlabel">Architect # </h2>
-            <h3 id="archnumber"><%= @contact.architect_number %></h3>
+    
+        <div id="archdiv">
+        <% if @contact.architect_name %>
+            <div id="archnamediv">
+                <h2 id="archnamelabel">Architect Name </h2>
+                <h3 id="archname"><%= @contact.architect_name %></h3>
+            </div>
+        <% end %>
+        <% if @contact.architect_company %>
+            <div id="archcompdiv">
+                <h2 id="archcomplabel">Architect Company </h2>
+                <h3 id="archcompany"><%= @contact.architect_company %></h3>
+            </div>
+        <% end %>
+        <% if @contact.architect_number %>
+            <div id="archnumdiv">
+                <h2 id="archnumlabel">Architect # </h2>
+                <h3 id="archnumber"><%= @contact.architect_number %></h3>
+            </div>
+        <% end %>
+        <% if @contact.architect_email %>
+            <div id="archemaildiv">
+                <h2 id="archemaillabel">Architect Email </h2>
+                <h3 id="archemail"><%= @contact.architect_email %></h3>
+            </div>
+        <% end %>
         </div>
-        <div id="archemaildiv">
-            <h2 id="archemaillabel">Architect Email </h2>
-            <h3 id="archemail"><%= @contact.architect_email %></h3>
+   
+            <div id="condiv">
+            <% if @contact.consultant_name %>
+                <div id="connamediv">
+                    <h2 id="connamelabel">Consultant Name </h2>
+                    <h3 id="conname"><%= @contact.consultant_name %></h3>
+                </div>
+            <% end %>
+            <% if @contact.consultant_company %>
+                <div id="concompdiv">
+                    <h2 id="concomplabel">Consultant Company </h2>
+                    <h3 id="concompany"><%= @contact.consultant_company %></h3>
+                </div>
+            <% end %>
+            <% if @contact.consultant_number %>
+                <div id="connumdiv">
+                    <h2 id="connumlabel">Consultant # </h2>
+                    <h3 id="connumber"><%= @contact.consultant_number %></h3>
+                </div>
+            <% end %>
         </div>
-    </div>
-        <div id="condiv">
-        <div id="connamediv">
-            <h2 id="connamelabel">Consultant Name </h2>
-            <h3 id="conname"><%= @contact.consultant_name %></h3>
         </div>
-
-        <div id="concompdiv">
-            <h2 id="concomplabel">Consultant Company </h2>
-            <h3 id="concompany"><%= @contact.consultant_company %></h3>
-        </div>
-
-        <div id="connumdiv">
-            <h2 id="connumlabel">Consultant # </h2>
-            <h3 id="connumber"><%= @contact.consultant_number %></h3>
-        </div>
-    </div>
-    </div>
-
+        
 
     
     

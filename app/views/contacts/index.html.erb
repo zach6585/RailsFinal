@@ -18,10 +18,11 @@
             <%= worker.name %>   
             <% end %>
         </td>
+        <td><%= link_to "View this Contact", "/contacts/#{contact.id}" %></td>
     </tr>
 
     
-    <%= link_to "View this Contact", "/contacts/#{contact.id}" %>
+    
     <br><br>
     
 <% end %>

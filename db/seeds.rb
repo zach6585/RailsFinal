@@ -12,5 +12,5 @@ worker1 = Worker.create(:name => "James Colleta", :email => "jamesyboy123@gmail.
 
 worker2 = Worker.create(:name => "zachary mines", :email => "moustacheman531@gmail.com", :admin => true)
 
-contact1 = Contact.create(:name => "Greg Senior", :email => "gregs@yahoo.com", :number => "num11", :title => "mr", :old_address => "ha", :new_address=> "bye", :category => "EU",:broker_name=> "jim", :broker_company=> "jim's", :broker_number=> "11111111", :notes=> "")
+contact1 = Contact.create(:company => "Greg's", :name => "Greg Senior", :email => "gregs@yahoo.com", :number => "num11", :title => "mr", :old_address => "ha", :new_address=> "bye", :category => "EU",:broker_name=> "jim", :broker_company=> "jim's", :broker_number=> "11111111", :notes=> "")
 contact1.workers << worker2

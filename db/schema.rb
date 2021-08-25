@@ -24,12 +24,15 @@ ActiveRecord::Schema.define(version: 2021_02_23_014548) do
     t.string "broker_name"
     t.string "broker_company"
     t.string "broker_number"
+    t.string "broker_email"
     t.string "architect_name"
     t.string "architect_company"
     t.string "architect_number"
+    t.string "architect_email"
     t.string "consultant_name"
     t.string "consultant_company"
     t.string "consultant_number"
+    t.string "consultant_email"
     t.text "notes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
