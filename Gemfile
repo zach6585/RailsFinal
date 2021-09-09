@@ -6,7 +6,7 @@ ruby '2.7.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
@@ -21,21 +21,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 gem 'valid_email2'
-gem 'capistrano', '~> 3.11'
-gem 'capistrano-rails', '~> 1.4'
-gem 'capistrano-passenger', '~> 0.2.0'
-gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
-# OAuth
-gem 'omniauth-oauth2', '~> 1.4.0'
-# OmniAuth CSRF protection
-gem 'omniauth-rails_csrf_protection', '~> 0.1.2'
-# REST calls to Microsoft Graph
-gem 'httparty', '~> 0.17.1'
-# Session storage in database
-gem 'activerecord-session_store', '~> 1.1'
-# Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
-gem 'tzinfo'
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
