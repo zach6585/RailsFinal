@@ -23,7 +23,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'valid_email2'
 
 gem 'oauth2'
-
+gem 'omniauth'
+gem 'omniauth-oauth2'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
